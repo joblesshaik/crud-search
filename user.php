@@ -1,13 +1,14 @@
 <?php
 include 'connect.php';
 if (isset($_POST['submit'])) {
+    $usn = $_POST['usn'];
     $name = $_POST['name'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
 
-    $sql = "insert into dbms (name,email,mobile,password) 
-    values('$name','$email','$mobile','$password')";
+    $sql = "insert into dbms (usn,name,email,mobile,password) 
+    values('$usn','$name','$email','$mobile','$password')";
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
@@ -41,23 +42,28 @@ if (isset($_POST['submit'])) {
         <form method="post">
             <div class="mb-3">
 
+                <label class="form-label">USN</label>
+                <input type="usn" class="form-control" placeholder="Enter your USN" name="usn" autocomplete="off" required>
+            </div>
+            <div class="mb-3">
+
                 <label class="form-label">Name</label>
-                <input type="name" class="form-control" placeholder="Enter your Name" name="name" autocomplete="off">
+                <input type="name" class="form-control" placeholder="Enter your Name" name="name" autocomplete="off" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Email address</label>
-                <input type="email" class="form-control" placeholder="Enter your Email id" name="email" autocomplete="off">
+                <input type="email" class="form-control" placeholder="Enter your Email id" name="email" autocomplete="off" required>
 
             </div>
             <div class="mb-3">
                 <label class="form-label">Mobile</label>
-                <input type="mobile" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off">
+                <input type="mobile" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="Enter your password" name="password" autocomplete="off">
+                <input type="password" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" required>
             </div>
 
 

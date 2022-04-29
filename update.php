@@ -1,9 +1,14 @@
 <?php
 include 'connect.php';
-$id = $_GET['updateid'];
-$sql = "select * from dbms where id=$id";
+$name ='';
+$email='';
+$mobile='';
+$password='';
+$usn = $_GET['updateid'];
+$sql = "select * from dbms where usn = '$usn' ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
+
 $name = $row['name'];
 $email = $row['email'];
 $mobile = $row['mobile'];
@@ -11,11 +16,12 @@ $password = $row['password'];
 
 
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
-    $password = $_POST['password'];
-    $sql = "update dbms set id='$id',name='$name',email='$email',mobile='$mobile',password='$password' where id=$id";
+    $usn = $_GET['usn'];
+    $name = $_GET['name'];
+    $email = $_GET['email'];
+    $mobile = $_GET['mobile'];
+    $password = $_GET['password'];
+    $sql = "update dbms set name='$name',email='$email',mobile='$mobile',password='$password' where id=$id";
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
@@ -46,7 +52,12 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="container my-5">
-        <form method="post">
+        <form method="GET" action="">
+            <div class="mb-3">
+
+                <label class="form-label">USN</label>
+                <input readonly type="usn" class="form-control" placeholder="Enter your USN" name="usn" autocomplete="off" value=" <?php echo $usn ?>">
+            </div>
             <div class="mb-3">
 
                 <label class="form-label">Name</label>

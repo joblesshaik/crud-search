@@ -29,7 +29,7 @@ include 'connect.php';
      <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">sl no</th>
+      <th scope="col">USN</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Mobile</th>
@@ -45,23 +45,23 @@ include 'connect.php';
    $result = mysqli_query($conn, $sql);
    if ($result) {
        while($row=mysqli_fetch_assoc($result)){
-           $id=$row['id'];
+           $usn=$row['usn'];
            $name=$row['name'];
            $email=$row['email'];
            $mobile=$row['mobile'];
            $password=$row['password'];
         echo '<tr>
-        <th scope="row">'.$id.'</th>
+        <th scope="row">'.$usn.'</th>
         <td>'. $name.'</td>
         <td>'.$email.'</td>
         <td>'.$mobile.'</td>
         <td>'.$password.'</td>
        <td><button class="btn btn-primary">
-       <a href="update.php?updateid='.$id.'" class="text-light">Update</a>    
+       <a href="update.php?updateid='.$usn.'" class="text-light">Update</a>    
        
        </button>
        <button class="btn btn-danger">
-       <a href="delete.php?deleteid='.$id.'" class="text-light">Delete</a>    
+       <a href="delete.php?deleteid='.$usn.'" class="text-light">Delete</a>    
        
        </button>
        </td>

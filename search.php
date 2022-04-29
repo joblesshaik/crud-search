@@ -30,7 +30,8 @@ include 'connect.php';
 
    <form action="" method="GET"> 
      <div class="col-md-6">
-        <input type="text" name="search" class='form-control' placeholder="Search By Name" value=<?php echo @$_GET['search']; ?> > 
+        <input type="text" name="search" class='form-control' placeholder="Search By Name" 
+        value=<?php echo @$_GET['search']; ?> > 
      </div>
      <div class="col-md-6 text-left">
      <button class="btn btn-primary my-5">
