@@ -1,31 +1,41 @@
 <?php
 include 'connect.php';
-$name ='';
-$email='';
-$mobile='';
-$password='';
-$usn = $_GET['updateid'];
-$sql = "select * from dbms where usn = '$usn' ";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
-$name = $row['name'];
-$email = $row['email'];
-$mobile = $row['mobile'];
-$password = $row['password'];
+$id=$_GET['updateid'];
+// echo $id;
 
 
-if (isset($_POST['submit'])) {
+$sql="select * from dbms where usn=$id";
+
+$result=mysqli_query($conn,$sql);
+
+$rowc =mysqli_fetch_assoc(  $result);
+echo $rowc['usn'];
+
+$usn =$rowc['usn'];
+$name = $rowc['name'];
+$email = $rowc['email'];
+$mobile = $rowc['mobile'];
+$password = $rowc['password'];
+// echo $usn;
+// echo $name;
+
+
+
+if (isset($_GET['submit'])) 
+{
     $usn = $_GET['usn'];
     $name = $_GET['name'];
     $email = $_GET['email'];
     $mobile = $_GET['mobile'];
     $password = $_GET['password'];
-    $sql = "update dbms set name='$name',email='$email',mobile='$mobile',password='$password' where id=$id";
+
+    $sql = "update `dbms` set usn=$usn,name='$name',email='$email',mobile='$mobile',password='$password' where usn='$usn'";
+  
+   
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
-        // echo "updated";
+        // 
         header('location:display.php');
     } else {
         die(mysqli_error($conn));
@@ -52,35 +62,35 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="container my-5">
-        <form method="GET" action="">
+        <form method="get">
             <div class="mb-3">
 
                 <label class="form-label">USN</label>
-                <input readonly type="usn" class="form-control" placeholder="Enter your USN" name="usn" autocomplete="off" value=" <?php echo $usn ?>">
+                <input type="usn" class="form-control" placeholder="Enter your USN" name="usn" autocomplete="off" required>
             </div>
             <div class="mb-3">
 
                 <label class="form-label">Name</label>
-                <input type="name" class="form-control" placeholder="Enter your Name" name="name" autocomplete="off" value=" <?php echo $name ?>">
+                <input type="name" class="form-control" placeholder="Enter your Name" name="name" autocomplete="off" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Email address</label>
-                <input type="email" class="form-control" placeholder="Enter your Email id" name="email" autocomplete="off" value=<?php echo $email ?>>
+                <input type="email" class="form-control" placeholder="Enter your Email id" name="email" autocomplete="off" required>
 
             </div>
             <div class="mb-3">
                 <label class="form-label">Mobile</label>
-                <input type="mobile" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off" value=<?php echo $mobile ?>>
+                <input type="mobile" class="form-control" placeholder="Enter your mobile number" name="mobile" autocomplete="off" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" value=<?php echo $password ?>>
+                <input type="password" class="form-control" placeholder="Enter your password" name="password" autocomplete="off" required>
             </div>
 
 
-            <button type="submit" class="btn btn-primary" name="submit">Update</button>
+            <button type="UPDATE" class="btn btn-primary" name="update">Update</button>
         </form>
     </div>
 

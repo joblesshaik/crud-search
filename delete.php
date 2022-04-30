@@ -5,6 +5,8 @@ if (isset($_GET['deleteid'])){
 
     $sql = "delete from dbms where usn ='$usn'";
 $result=mysqli_query($conn,$sql);
+
+
 if ($result) {
     header('location:display.php');
    
