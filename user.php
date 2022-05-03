@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
 
-    $sql = "insert into dbms (usn,name,email,mobile,password) 
+    $sql = "insert into dbms (usn,stud_name,email,mobile,pass) 
     values('$usn','$name','$email','$mobile','$password')";
 
     $result = mysqli_query($conn, $sql);

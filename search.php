@@ -22,7 +22,7 @@ include 'connect.php';
    
      if(isset($_GET['search'])){
         $searchKey = $_GET['search'];
-        $sql = "SELECT * FROM dbms WHERE name LIKE '%$searchKey%'";
+        $sql = "SELECT * FROM dbms WHERE stud_name LIKE '%$searchKey%'";
      }else
      $sql = "SELECT * FROM dbms";
      $result = $conn->query($sql);
@@ -53,10 +53,10 @@ include 'connect.php';
     </tr>
   <?php while( $row = $result->fetch_object() ): ?>
   <tr>
-     <td><?php echo $row->name ?></td>
-     <td><?php echo $row->email ?></td>
-     <td><?php echo $row->mobile ?></td>
-     <td><?php echo $row->password ?></td>
+     <td><?php echo $row->stud_name ?></td>
+     <td><?php echo $row->email?></td>
+     <td><?php echo $row->mobile?></td>
+     <td><?php echo $row->pass?></td>
  
   </tr>
   <?php endwhile; ?>

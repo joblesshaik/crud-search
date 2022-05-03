@@ -46,10 +46,10 @@ include 'connect.php';
    if ($result) {
        while($row=mysqli_fetch_assoc($result)){
            $usn=$row['usn'];
-           $name=$row['name'];
+           $name=$row['stud_name'];
            $email=$row['email'];
            $mobile=$row['mobile'];
-           $password=$row['password'];
+           $password=$row['pass'];
         echo '<tr>
         <th scope="row">'.$usn.'</th>
         <td>'. $name.'</td>
@@ -57,7 +57,7 @@ include 'connect.php';
         <td>'.$mobile.'</td>
         <td>'.$password.'</td>
        <td><button class="btn btn-primary">
-       <a href="update.php?updateid='.$usn.'" class="text-light">Update</a>    
+       <a href="update2.php?updateid='.$usn.'" class="text-light">Update</a>    
        
        </button>
        <button class="btn btn-danger">
