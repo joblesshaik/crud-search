@@ -30,7 +30,7 @@ $password = $row['pass'];
         $data=mysqli_query($conn,$stud2);
         $check=mysqli_num_rows($data);
         //if condition for update
-        if($check>0)//check for other condtion  this is not working  
+        if($check>0) 
         {
         $usn = $_GET['usn'];
         $name = $_GET['name'];
